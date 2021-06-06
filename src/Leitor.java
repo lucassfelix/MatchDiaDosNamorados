@@ -20,13 +20,12 @@ public class Leitor {
         while ((row = csvReader.readLine()) != null) {
             String[] data = row.split("\t");
             var nome = data[1].trim();
-            var info = data[2];
-            var gender = data[3];
-            var interesse = data[4];
+            var gender = data[2];
+            var interesse = data[3];
 
             List<Integer> respostasCandidato = new ArrayList<>();
 
-            for (int i = 5; i < data.length; i++) {
+            for (int i = 4; i < data.length; i++) {
                 var resposta = data[i];
                 if(idRespostas.containsKey(resposta))
                 {
@@ -39,7 +38,7 @@ public class Leitor {
                 }
             }
 
-            Candidato novoCandidato = new Candidato(nome, info, gender, interesse, respostasCandidato);
+            Candidato novoCandidato = new Candidato(nome, gender, interesse, respostasCandidato);
 
             candidatoSet.add(novoCandidato);
         }
